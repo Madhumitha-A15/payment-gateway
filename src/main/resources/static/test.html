@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick="pay()">Send Payment</button>
+<pre id="out"></pre>
+<script>
+    async function pay() {
+      const res = await fetch('/payments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: 100 })
+      });
+      document.getElementById('out').textContent =
+        res.status + '\n' + await res.text();
+    }
+</script>
+</body>
+</html>
